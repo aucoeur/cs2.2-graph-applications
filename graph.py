@@ -1,4 +1,5 @@
 from collections import deque
+from random import choice
 
 class Vertex(object):
     """

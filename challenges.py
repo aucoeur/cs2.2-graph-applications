@@ -1,4 +1,5 @@
 from graph import Graph
+from collections import deque()
 
 def numIslands(grid):
     """Take in a grid of 1s (land) and 0s (water) and return the number of islands."""
@@ -122,7 +123,19 @@ assert timeToRot(oranges3) == 0
 
 def courseOrder(numCourses, prerequisites):
     """Return a course schedule according to the prerequisites provided."""
-    pass
+
+    graph = Graph(is_directed=True)
+
+    course = [graph.add_vertex(each) for courses in prerequisites for each in courses]
+
+    if numCourses != len(graph.get_vertices()):
+        return []
+
+    for each in prerequisites:
+        graph.add_edge(each[1], each[0])
+
+    return graph.topological_sort()
+    # return graph
 
 # Test Cases
 courses1 = [ [1,0] ]
